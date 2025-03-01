@@ -67,9 +67,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/depenses-recurrentes" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors {{ request()->is('depenses-recurrentes') ? 'bg-gray-100 text-gray-900' : '' }}">
-                                    <i class="fas fa-sync-alt w-5 h-5 {{ request()->is('depenses-recurrentes') ? 'text-secondary' : 'text-gray-500' }}"></i>
-                                    <span class="ml-3 text-sm font-medium">Récurrentes</span>
+                                <a href="/epargner" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors {{ request()->is('epargner') ? 'bg-gray-100 text-gray-900' : '' }}">
+                                    <i class="fas fa-sync-alt w-5 h-5 {{ request()->is('epargner') ? 'text-secondary' : 'text-gray-500' }}"></i>
+                                    <span class="ml-3 text-sm font-medium">Epargne</span>
                                 </a>
                             </li>
                         </ul>

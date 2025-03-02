@@ -30,7 +30,7 @@
                                 name="target_amount" 
                                 id="target_amount" 
                                 value="{{ old('target_amount', $epargner->target_amount) }}"
-                                class="pl-7 block w-full rounded-md border-gray-300 shadow-sm focus:border-secondary focus:ring focus:ring-secondary focus:ring-opacity-50" 
+                                class="pl-9 py-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-secondary focus:ring focus:ring-secondary focus:ring-opacity-50" 
                                 required>
                         </div>
                         @error('target_amount')
@@ -49,7 +49,7 @@
                                 name="saved_amount" 
                                 id="saved_amount" 
                                 value="{{ old('saved_amount', $epargner->saved_amount) }}"
-                                class="pl-7 block w-full rounded-md border-gray-300 shadow-sm focus:border-secondary focus:ring focus:ring-secondary focus:ring-opacity-50" 
+                                class="pl-9 py-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-secondary focus:ring focus:ring-secondary focus:ring-opacity-50" 
                                 required>
                         </div>
                         @error('saved_amount')

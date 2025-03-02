@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepencesController;
 use App\Http\Controllers\EpargneController;
+use App\Http\Controllers\SouhaitController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('depences', DepencesController::class);
     Route::resource('epargner', EpargneController::class);
+    Route::resource('souhait', SouhaitController::class);
 });
 
 // Route::get('/depences', function () {

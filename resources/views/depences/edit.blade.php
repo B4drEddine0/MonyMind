@@ -20,7 +20,7 @@
                         <label for="amount" class="block text-sm font-medium text-gray-700">Montant (DH)</label>
                         <div class="mt-1">
                             <input type="number" name="amount" id="amount" step="0.01" 
-                                class="shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md"
+                                class="pl-3 py-2 shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md"
                                 value="{{ old('amount', $depence->amount) }}" required>
                         </div>
                         @error('amount')
@@ -62,7 +62,7 @@
                         <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                         <div class="mt-1">
                             <input type="text" name="description" id="description" 
-                                class="shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md"
+                                class="pl-3 py-2 shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md"
                                 value="{{ old('description', $depence->description) }}" required>
                         </div>
                         @error('description')
@@ -110,7 +110,7 @@
                         <label for="notes" class="block text-sm font-medium text-gray-700">Notes (optionnel)</label>
                         <div class="mt-1">
                             <textarea name="notes" id="notes" rows="3" 
-                                class="shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md">{{ old('notes', $depence->notes) }}</textarea>
+                                class="pl-2 shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md">{{ old('notes', $depence->notes) }}</textarea>
                         </div>
                     </div>
 

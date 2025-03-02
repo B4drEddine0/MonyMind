@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Models\Depences;    
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -51,5 +51,16 @@ class User extends Authenticatable
     public function depences()
     {
         return $this->hasMany(Depences::class);
+    }
+
+    public function getResteProgressAttribute()
+    {
+        if ($this->salaire <= 0) {
+            return 0;
+        }
+        
+        $totalDepenses = $this->depences()->sum('amount'); 
+        $progress = ($this->salaire - $totalDepenses) / 100;
+        return $progress;
     }
 }

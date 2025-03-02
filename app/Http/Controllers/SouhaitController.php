@@ -32,12 +32,14 @@ class SouhaitController extends Controller
         $request->validate([
             'titre' => 'required|string|max:255',
             'montant_estime' => 'required|numeric|min:0',
+            'categorie' => 'required|string|max:255',
         ]);
 
         Souhait::create([
             'titre' => $request->titre,
             'montant_estime' => $request->montant_estime,
             'user_id' => auth()->id(),
+            'categorie' => $request->categorie,
         ]);
 
         return redirect()->route('souhait.index')->with('success', 'Souhait créé avec succès');

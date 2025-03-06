@@ -7,6 +7,8 @@ use App\Models\Epargne;
 use App\Models\Souhait;
 use Illuminate\Http\Request;
 
+
+
 class DashboardController extends Controller
 {
     /**
@@ -22,6 +24,7 @@ class DashboardController extends Controller
         $epargne = Epargne::where('user_id', auth()->user()->id)->get();
         $totalEpargne = $epargne->sum('saved_amount');
         $user = User::find(auth()->user()->id);
+        
         return view('dashboard', compact('user', 'totalDepences', 'totalEpargne', 'depences', 'souhaits', 'reccurents'));
     
     }

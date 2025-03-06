@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'salaire',
         'date_salaire',
+        'budget',
     ];
 
     /**
@@ -53,14 +54,4 @@ class User extends Authenticatable
         return $this->hasMany(Depences::class);
     }
 
-    public function getResteProgressAttribute()
-    {
-        if ($this->salaire <= 0) {
-            return 0;
-        }
-        
-        $totalDepenses = $this->depences()->sum('amount'); 
-        $progress = ($this->salaire - $totalDepenses) / 100;
-        return $progress;
-    }
 }

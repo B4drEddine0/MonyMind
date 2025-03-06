@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->decimal('salaire', 10, 2);
             $table->date('date_salaire');
+            $table->decimal('budget', 10, 2)->default(0);
+            $table->boolean('is_admin')->default(false);
+            $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

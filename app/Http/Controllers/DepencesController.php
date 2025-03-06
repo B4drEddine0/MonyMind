@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Depences;
+use App\Models\User;
+use App\Models\Epargne;
 use Illuminate\Http\Request;
 
 
@@ -11,10 +13,20 @@ class DepencesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(User $user, Depences $depence , Epargne $epargne)
     {
+
+        $user = User::find(auth()->user()->id);
+        $totalEpargne = $epargne->sum('saved_amount');
+        $totalDepences = $depence->sum('amount'); 
+        $user->budget = $user->budget - ($totalDepences+$totalEpargne);
+        $user->save(); 
+
+
         $depences = auth()->user()->depences()->latest()->get();
         return view('depences.index', compact('depences'));
+
+        
     }
 
     /**

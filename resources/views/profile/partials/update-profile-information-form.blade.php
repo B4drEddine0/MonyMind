@@ -47,6 +47,21 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="salaire" :value="__('Salaire')" />
+            <x-text-input 
+                id="salaire" 
+                name="salaire" 
+                type="number" 
+                step="0.01"
+                class="mt-1 block w-full" 
+                :value="old('salaire', $user->salaire)" 
+                required 
+                autocomplete="off" 
+            />
+            <x-input-error class="mt-2" :messages="$errors->get('salaire')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

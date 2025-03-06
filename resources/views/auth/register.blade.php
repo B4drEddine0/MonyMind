@@ -70,7 +70,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
                             </div>
-                            <input id="name" class="pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+                            <input id="name" class="py-2 pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
                         </div>
                         @error('name')
                             <p class="mt-2 text-sm text-danger">{{ $message }}</p>
@@ -86,7 +86,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                                 </svg>
                             </div>
-                            <input id="email" class="pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="email" name="email" value="{{ old('email') }}" required autocomplete="username">
+                            <input id="email" class="py-2 pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="email" name="email" value="{{ old('email') }}" required autocomplete="username">
                         </div>
                         @error('email')
                             <p class="mt-2 text-sm text-danger">{{ $message }}</p>
@@ -102,7 +102,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <input id="monthly_salary" class="pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="number" name="monthly_salary" value="{{ old('monthly_salary') }}" required>
+                            <input id="monthly_salary" class="py-2 pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="number" name="monthly_salary" value="{{ old('monthly_salary') }}" required>
                         </div>
                         @error('monthly_salary')
                             <p class="mt-2 text-sm text-danger">{{ $message }}</p>
@@ -139,7 +139,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                 </svg>
                             </div>
-                            <input id="password" class="pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="password" name="password" required autocomplete="new-password">
+                            <input id="password" class="py-2 pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="password" name="password" required autocomplete="new-password">
                         </div>
                         @error('password')
                             <p class="mt-2 text-sm text-danger">{{ $message }}</p>
@@ -155,7 +155,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                 </svg>
                             </div>
-                            <input id="password_confirmation" class="pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="password" name="password_confirmation" required autocomplete="new-password">
+                            <input id="password_confirmation" class="py-2 pl-10 w-full rounded-lg border-gray-300 focus:border-secondary focus:ring focus:ring-secondary/20 transition-all" type="password" name="password_confirmation" required autocomplete="new-password">
                         </div>
                     </div>
 
@@ -176,69 +176,5 @@
         </div>
     </div>
 
-    <script>
-        // Simple particles effect for background
-        document.addEventListener('DOMContentLoaded', function() {
-            const particlesContainer = document.getElementById('particles');
-            
-            function createParticle() {
-                const particle = document.createElement('div');
-                
-                // Random position
-                const posX = Math.random() * 100;
-                const delay = Math.random() * 5;
-                
-                // Random financial symbol
-                const symbols = ['$', '€', '¥', '£', '%', '💰', '💸', '📊', '📈'];
-                const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-                
-                particle.innerHTML = symbol;
-                particle.className = 'absolute text-gray-200 opacity-10';
-                particle.style.left = `${posX}%`;
-                particle.style.top = '-20px';
-                particle.style.fontSize = `${Math.random() * 20 + 10}px`;
-                particle.style.animation = `float ${Math.random() * 15 + 10}s linear infinite`;
-                particle.style.animationDelay = `${delay}s`;
-                
-                particlesContainer.appendChild(particle);
-                
-                // Remove particle after animation
-                setTimeout(() => {
-                    particle.remove();
-                }, 25000 + delay * 1000);
-            }
-            
-            // Create initial particles
-            for (let i = 0; i < 20; i++) {
-                createParticle();
-            }
-            
-            // Create new particles periodically
-            setInterval(createParticle, 800);
-        });
-    </script>
-
-    <style>
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.1;
-            }
-            90% {
-                opacity: 0.1;
-            }
-            100% {
-                transform: translateY(calc(100vh + 20px)) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        input:focus {
-            outline: none;
-        }
-    </style>
 </body>
 </html>

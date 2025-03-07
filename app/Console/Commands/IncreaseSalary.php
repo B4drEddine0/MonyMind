@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\User;
+use App\Models\Epargne;
 use Carbon\Carbon;
 
 class IncreaseSalary extends Command
@@ -28,7 +29,27 @@ class IncreaseSalary extends Command
     public function handle()
     {
         $now = Carbon::now();
-        $users = User::whereNotNull('salaire')->whereMonth('date_salaire', $now->month)->whereDay('date_salaire', $now->day)->get();
+        $users = User::whereNotNull('salaire')->whereDay('date_salaire', $now->day)->get();
+
+        foreach($users as $user){
+            $epargne = $user->epargne()->first();
+            if ($epargne) {
+                if($user->budget >= $epargne->target_amount){
+                    $epargne->saved_amount = $epargne->target_amount;
+                    $epargne->is_completed = true;
+                    $epargne->save();
+                    $user->budget -= $epargne->target_amount;
+                    $user->save();
+                }else{
+                    $epargne->saved_amount = $user->budget;
+                    $epargne->save();
+                    $user->budget = 0;
+                    $user->save();
+                }
+            } else {
+                $this->warn("No epargne record found for {$user->name}");
+            }
+        }
 
         foreach($users as $user){
             $user->budget += $user->salaire;

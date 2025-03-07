@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Souhait;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SouhaitController extends Controller
@@ -21,7 +22,8 @@ class SouhaitController extends Controller
      */
     public function create()
     {
-        return view('souhait.create');
+        $categories = Category::all();
+        return view('souhait.create',compact('categories'));
     }
 
     /**
@@ -58,7 +60,8 @@ class SouhaitController extends Controller
      */
     public function edit(Souhait $souhait)
     {
-        return view('souhait.edit', compact('souhait'));
+        $categories = Category::All();
+        return view('souhait.edit', compact('souhait','categories'));
     }
 
     /**

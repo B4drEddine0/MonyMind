@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'salaire' => $request->monthly_salary,
+            'budget' => $request->monthly_salary,
             'date_salaire' => $request->salary_date,
         ]);
 

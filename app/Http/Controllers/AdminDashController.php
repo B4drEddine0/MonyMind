@@ -16,7 +16,7 @@ class AdminDashController extends Controller
     {
         $totalUsers = User::where('is_admin', false)->count();
         $averageSalaire = User::where('is_admin', false)->avg('salaire') ?? 0;
-        $users = User::where('is_admin', false)->get();
+        $users = User::where('is_admin', false)->paginate(6);
         return view('admin.dashboard', compact('totalUsers','averageSalaire','users'));
     }
 

@@ -33,23 +33,9 @@
                             <select name="category" id="category" 
                                 class="shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md">
                                 <option value="">Sélectionner une catégorie</option>
-                                <option value="Nourriture" {{ old('category') == 'Nourriture' ? 'selected' : '' }}>🍽️ Nourriture</option>
-                                <option value="Restaurant" {{ old('category') == 'Restaurant' ? 'selected' : '' }}>🍳 Restaurant</option>
-                                <option value="Courses" {{ old('category') == 'Courses' ? 'selected' : '' }}>🛒 Courses</option>
-                                <option value="Transport" {{ old('category') == 'Transport' ? 'selected' : '' }}>🚗 Transport</option>
-                                <option value="Carburant" {{ old('category') == 'Carburant' ? 'selected' : '' }}>⛽ Carburant</option>
-                                <option value="Logement" {{ old('category') == 'Logement' ? 'selected' : '' }}>🏠 Logement</option>
-                                <option value="Factures" {{ old('category') == 'Factures' ? 'selected' : '' }}>📄 Factures</option>
-                                <option value="Internet" {{ old('category') == 'Internet' ? 'selected' : '' }}>🌐 Internet</option>
-                                <option value="Telephone" {{ old('category') == 'Telephone' ? 'selected' : '' }}>📱 Téléphone</option>
-                                <option value="Abonnements" {{ old('category') == 'Abonnements' ? 'selected' : '' }}>📺 Abonnements</option>
-                                <option value="Divertissement" {{ old('category') == 'Divertissement' ? 'selected' : '' }}>🎮 Divertissement</option>
-                                <option value="Shopping" {{ old('category') == 'Shopping' ? 'selected' : '' }}>🛍️ Shopping</option>
-                                <option value="Sante" {{ old('category') == 'Sante' ? 'selected' : '' }}>⚕️ Santé</option>
-                                <option value="Education" {{ old('category') == 'Education' ? 'selected' : '' }}>📚 Education</option>
-                                <option value="Assurance" {{ old('category') == 'Assurance' ? 'selected' : '' }}>🛡️ Assurance</option>
-                                <option value="Services" {{ old('category') == 'Services' ? 'selected' : '' }}>🔧 Services</option>
-                                <option value="Autre" {{ old('category') == 'Autre' ? 'selected' : '' }}>📦 Autre</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->nom }}" {{ old('category') == $category->nom ? 'selected' : '' }}>{{ $category->nom }}</option>
+                                @endforeach
                             </select>
                         </div>
                         @error('category')

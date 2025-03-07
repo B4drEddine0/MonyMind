@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Depences;
 use App\Models\User;
 use App\Models\Epargne;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 
@@ -15,18 +16,8 @@ class DepencesController extends Controller
      */
     public function index(User $user, Depences $depence , Epargne $epargne)
     {
-
-        $user = User::find(auth()->user()->id);
-        $totalEpargne = $epargne->sum('saved_amount');
-        $totalDepences = $depence->sum('amount'); 
-        $user->budget = $user->budget - ($totalDepences+$totalEpargne);
-        $user->save(); 
-
-
         $depences = auth()->user()->depences()->latest()->get();
-        return view('depences.index', compact('depences'));
-
-        
+        return view('depences.index', compact('depences'));   
     }
 
     /**
@@ -34,7 +25,8 @@ class DepencesController extends Controller
      */
     public function create()
     {
-        return view('depences.create');
+        $categories = Category::all();
+        return view('depences.create', compact('categories'));
     }
 
     /**
@@ -59,7 +51,12 @@ class DepencesController extends Controller
         }
 
         auth()->user()->depences()->create($validated);
-
+        // if(!$request->is_recurring){
+            $user = auth()->user();
+            $user->budget = $user->budget - $validated['amount'];
+            $user->save();
+        // }
+        
         return redirect()->route('depences.index');
     }
 
@@ -76,7 +73,8 @@ class DepencesController extends Controller
      */
     public function edit(Depences $depence)
     {
-        return view('depences.edit', compact('depence'));
+        $categories = Category::all();
+        return view('depences.edit', compact('depence','categories'));
     }
 
     /**
@@ -108,9 +106,12 @@ class DepencesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Depences $depence)
+    public function destroy(Depences $depence, User $user)
     {
         $depence->delete();
+        $user = auth()->user();
+        $user->budget = $user->budget + $depence->amount;
+        $user->save();
         return redirect()->route('depences.index');
     }
 }

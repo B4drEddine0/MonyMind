@@ -31,17 +31,9 @@
                             <label for="categorie" class="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
                             <select name="categorie" id="categorie" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-base">
-                                <option value="Électronique">💻 Électronique</option>
-                                <option value="Véhicules">🚗 Véhicules</option>
-                                <option value="Immobilier">🏠 Immobilier</option>
-                                <option value="Voyage">✈️ Voyage</option>
-                                <option value="Mode & Accessoires">👔 Mode & Accessoires</option>
-                                <option value="Sport & Loisirs">⚽ Sport & Loisirs</option>
-                                <option value="Machines & Outils">🛠️ Machines & Outils</option>
-                                <option value="Éducation">📚 Éducation</option>
-                                <option value="Divertissement">🎮 Divertissement</option>
-                                <option value="Santé & Bien-être">🧘 Santé & Bien-être</option>
-                                <option value="Autre">⚡ Autre</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->nom }}">{{ $category->nom }}</option>
+                                @endforeach
                             </select>
                         </div>
 

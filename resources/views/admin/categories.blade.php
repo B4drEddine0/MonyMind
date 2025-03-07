@@ -50,7 +50,7 @@
 
                     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 hidden items-center justify-center" id="editCategoryModal{{ $category->id }}">
                         <div class="fixed inset-0 flex items-center justify-center p-4">
-                            <div class="bg-white rounded-lg p-8 max-w-md w-full mx-auto transform transition-all">
+                            <div class="bg-white rounded-lg p-4 max-w-md w-full mx-auto transform transition-all">
                                 <div class="absolute top-0 right-0 pt-4 pr-4">
                                     <button type="button" class="text-gray-400 hover:text-gray-500 focus:outline-none" onclick="closeEditModal({{ $category->id }})">
                                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,11 +89,13 @@
                         </div>
                     </div>
                     @endforeach
+                    
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+{{$categories->links()}}
 
 
 <div id="createModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 hidden items-center justify-center">

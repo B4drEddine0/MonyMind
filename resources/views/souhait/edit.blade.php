@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="mb-6">
-                            <label for="montant_estime" class="block text-sm font-medium text-gray-700 mb-2">Montant Estimé (€)</label>
+                            <label for="montant_estime" class="block text-sm font-medium text-gray-700 mb-2">Montant Estimé (DH)</label>
                             <input type="number" step="0.01" name="montant_estime" id="montant_estime" value="{{ $souhait->montant_estime }}" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 px-4 text-base" 
                                 required>
@@ -32,17 +32,9 @@
                             <label for="categorie" class="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
                             <select name="categorie" id="categorie" 
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 px-4 text-base">
-                                <option value="Électronique" {{ $souhait->categorie === 'Électronique' ? 'selected' : '' }}>💻 Électronique</option>
-                                <option value="Véhicules" {{ $souhait->categorie === 'Véhicules' ? 'selected' : '' }}>🚗 Véhicules</option>
-                                <option value="Immobilier" {{ $souhait->categorie === 'Immobilier' ? 'selected' : '' }}>🏠 Immobilier</option>
-                                <option value="Voyage" {{ $souhait->categorie === 'Voyage' ? 'selected' : '' }}>✈️ Voyage</option>
-                                <option value="Mode & Accessoires" {{ $souhait->categorie === 'Mode & Accessoires' ? 'selected' : '' }}>👔 Mode & Accessoires</option>
-                                <option value="Sport & Loisirs" {{ $souhait->categorie === 'Sport & Loisirs' ? 'selected' : '' }}>⚽ Sport & Loisirs</option>
-                                <option value="Machines & Outils" {{ $souhait->categorie === 'Machines & Outils' ? 'selected' : '' }}>🛠️ Machines & Outils</option>
-                                <option value="Éducation" {{ $souhait->categorie === 'Éducation' ? 'selected' : '' }}>📚 Éducation</option>
-                                <option value="Divertissement" {{ $souhait->categorie === 'Divertissement' ? 'selected' : '' }}>🎮 Divertissement</option>
-                                <option value="Santé & Bien-être" {{ $souhait->categorie === 'Santé & Bien-être' ? 'selected' : '' }}>🧘 Santé & Bien-être</option>
-                                <option value="Autre" {{ $souhait->categorie === 'Autre' ? 'selected' : '' }}>⚡ Autre</option>
+                                @foreach($categories as $categorie)
+                                <option value="{{$categorie->nom}}" {{ $souhait->categorie === $categorie->nom ? 'selected' : '' }}>{{$categorie->nom}}</option>
+                                @endforeach
                             </select>
                         </div>
 

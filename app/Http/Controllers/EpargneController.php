@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Epargne;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -75,23 +76,18 @@ class EpargneController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Epargne $epargner)
+    public function update(Request $request, Epargne $epargner, User $user)
     {
         if ($epargner->user_id !== auth()->id()) {
             abort(403);
         }
 
         $validated = $request->validate([
-            'target_amount' => 'required|numeric|min:0',
-            'saved_amount' => 'required|numeric|min:0',
-            'is_completed' => 'boolean',
+            'target_amount' => 'required|numeric|min:0'
         ]);
 
         $epargner->target_amount = $validated['target_amount'];
-        $epargner->saved_amount = $validated['saved_amount'];
-        $epargner->is_completed = $request->has('is_completed');
 
-       
         if ($epargner->saved_amount >= $epargner->target_amount) {
             $epargner->is_completed = true;
         }
@@ -113,6 +109,10 @@ class EpargneController extends Controller
         }
 
         $epargner->delete();
+        $user = auth()->user();
+        $user->budget += $epargner->saved_amount;
+        $user->save();
+        
 
         return redirect()->route('epargner.index')
             ->with('success', 'Objectif d\'épargne supprimé avec succès.');

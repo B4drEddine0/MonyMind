@@ -5,12 +5,18 @@ use App\Models\User;
 use App\Models\Depences;
 use App\Models\Epargne;
 use App\Models\Souhait;
+use App\Services\GeminiAiServices;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    protected $geminiService;
+
+    public function __construct(GeminiAiServices $geminiService)
+    {
+        $this->geminiService = $geminiService;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -24,8 +30,21 @@ class DashboardController extends Controller
         $epargne = Epargne::where('user_id', auth()->user()->id)->get();
         $totalEpargne = $epargne->sum('saved_amount');
         $user = User::find(auth()->user()->id);
-        
-        return view('dashboard', compact('user', 'totalDepences', 'totalEpargne', 'depences', 'souhaits', 'reccurents'));
+
+        $categoryCounts = Depences::select('category', DB::raw('count(*) as count'))
+                            ->where('user_id', auth()->user()->id)
+                            ->groupBy('category')
+                            ->get()
+                            ->map(function($item) {
+                                return [
+                                    'name' => $item->category,
+                                    'count' => $item->count
+                                ];
+                            });
+
+        $aianswer = $this->generateText();
+    
+        return view('dashboard', compact('user', 'totalDepences', 'totalEpargne', 'depences', 'souhaits', 'reccurents', 'categoryCounts', 'aianswer'));
     
     }
 
@@ -75,6 +94,14 @@ class DashboardController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function generateText(){
+
+        $prompt = "hi my name is badr";
+        $response = $this->geminiService->generateResponse($prompt);
+        return $response['candidates'][0]['content']['parts'][0]['text'];
+
     }
 
     

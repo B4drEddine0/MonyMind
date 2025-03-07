@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('titre');
             $table->decimal('montant_estime', 10, 2);
-            $table->enum('categorie', ['Électronique', 'Véhicules', 'Immobilier', 'Voyage', 'Mode & Accessoires', 'Sport & Loisirs', 'Machines & Outils', 'Éducation', 'Divertissement', 'Santé & Bien-être', 'Autre']);
+            $table->string('categorie');
             $table->timestamps();
         });
     }

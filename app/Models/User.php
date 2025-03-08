@@ -64,4 +64,10 @@ class User extends Authenticatable
         return $this->hasOne(Alert::class);
     }
 
+    public function getRedirectRoute(){
+        if($this->is_admin){
+            return 'admin';
+        }
+        return 'dashboard';
+    }
 }

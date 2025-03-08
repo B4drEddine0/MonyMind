@@ -9,8 +9,6 @@ use App\Http\Controllers\AdminDashController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AlertController;
 use App\Http\Middleware\AdminMiddleware;
-use App\Mail\GlobalAlert;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

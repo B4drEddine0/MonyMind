@@ -14,10 +14,32 @@ class DepencesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(User $user, Depences $depence , Epargne $epargne)
+    public function index(User $user, Depences $depence , Epargne $epargne, Request $request)
     {
-        $depences = auth()->user()->depences()->latest()->paginate(8);
-        return view('depences.index', compact('depences'));   
+         $typeFilter = $request->type ?? 'all';
+         $categoryFilter = $request->category ?? 'all';
+         $query = auth()->user()->depences()->latest();
+         
+         if ($typeFilter === 'recurring') {
+             $query = $query->where('is_recurring', true);
+         } elseif ($typeFilter === 'non-recurring') {
+             $query = $query->where('is_recurring', false);
+         }
+    
+         if ($categoryFilter !== 'all') {
+             $query = $query->where('category', $categoryFilter);
+         }
+         
+         $depences = $query->paginate(8);
+         $categories = auth()->user()->depences()->select('category')->distinct()->pluck('category');
+
+         if ($request->has('reset')) {
+            $typeFilter = 'all';
+            $categoryFilter = 'all';
+            return redirect()->route('depences.index');
+        }
+
+        return view('depences.index', compact('depences','categories'));   
     }
 
     /**

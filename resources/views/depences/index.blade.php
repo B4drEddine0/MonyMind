@@ -15,6 +15,40 @@
         </div>
     @endif
 
+
+    <div class="mb-6">
+        <form action="{{ route('depences.index') }}" method="GET" class="flex flex-wrap gap-4">
+            <div class="flex-1 min-w-[200px]">
+                <label for="type" class="block text-sm font-medium text-gray-700 mb-1">Type de dépense</label>
+                <select name="type" id="type" class="w-full border-gray-300 rounded-md shadow-sm focus:border-primary focus:ring focus:ring-primary/20" onchange="this.form.submit()">
+                    <option value="all" {{ request('type') == 'all' || request('type') == null ? 'selected' : '' }}>Toutes les dépenses</option>
+                    <option value="recurring" {{ request('type') == 'recurring' ? 'selected' : '' }}>Dépenses récurrentes</option>
+                    <option value="non-recurring" {{ request('type') == 'non-recurring' ? 'selected' : '' }}>Dépenses uniques</option>
+                </select>
+            </div>
+
+            <div class="flex-1 min-w-[200px]">
+                <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+                <select name="category" id="category" class="w-full border-gray-300 rounded-md shadow-sm focus:border-primary focus:ring focus:ring-primary/20" onchange="this.form.submit()">
+                    <option value="all" {{ request('category') == 'all' || request('category') == null ? 'selected' : '' }}>Toutes les catégories</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category }}" {{ request('category') == $category ? 'selected' : '' }}>
+                            {{ $category }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="flex items-end">
+                <button type="submit" name="reset" value="1" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-gray-700">
+                    <i class="fas fa-sync-alt mr-1"></i> Réinitialiser
+                </button>
+            </div>
+        </form>
+    </div>
+
+    
+
     <div class="bg-white rounded-lg shadow overflow-hidden">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">

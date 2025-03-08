@@ -16,7 +16,7 @@ class DepencesController extends Controller
      */
     public function index(User $user, Depences $depence , Epargne $epargne)
     {
-        $depences = auth()->user()->depences()->latest()->get();
+        $depences = auth()->user()->depences()->latest()->paginate(8);
         return view('depences.index', compact('depences'));   
     }
 

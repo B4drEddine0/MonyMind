@@ -60,7 +60,6 @@
             </div>
         </div>
 
-        <!-- AI Suggestion Banner -->
         <div class="bg-gradient-to-r from-primary to-primary/80 text-white rounded-2xl shadow-sm p-6 mb-8">
             <div class="flex items-start">
                 <div class="mr-4 p-3 bg-white/20 rounded-xl">
@@ -72,8 +71,7 @@
                     <h3 class="font-semibold text-xl mb-2">Suggestion de MoneyMind AI</h3>
                     <p class="opacity-90 mb-4">{{$aianswer}}</p>
                     <div class="flex items-center space-x-2">
-                        <button class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium">Voir les détails</button>
-                        <button class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-sm">Ignorer</button>
+                        <button class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium" onclick="window.location.reload();">Voir une autre Suggestion</button>
                     </div>
                 </div>
             </div>

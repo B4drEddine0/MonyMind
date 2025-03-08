@@ -59,4 +59,9 @@ class User extends Authenticatable
         return $this->hasOne(Epargne::class);
     }
 
+    public function alert()
+    {
+        return $this->hasOne(Alert::class);
+    }
+
 }

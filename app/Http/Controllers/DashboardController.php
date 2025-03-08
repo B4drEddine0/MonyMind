@@ -6,6 +6,7 @@ use App\Models\Depences;
 use App\Models\Epargne;
 use App\Models\Souhait;
 use App\Services\GeminiAiServices;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,8 +25,8 @@ class DashboardController extends Controller
     {
         $reccurents = Depences::where('user_id', auth()->user()->id)->where('is_recurring', true)->limit(3)->get();
         $souhaits = Souhait::where('user_id', auth()->user()->id)->orderBy('updated_at', 'desc')->limit(3)->get();
-        $depences = Depences::where('user_id', auth()->user()->id)->orderBy('date', 'desc')->limit(4)->get();
-        $depence = Depences::where('user_id', auth()->user()->id)->get();
+        $depences = Depences::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
+        $depence = Depences::where('user_id', auth()->user()->id)->whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->get();
         $totalDepences = $depence->sum('amount'); 
         $epargne = Epargne::where('user_id', auth()->user()->id)->get();
         $totalEpargne = $epargne->sum('saved_amount');
@@ -98,7 +99,9 @@ class DashboardController extends Controller
 
     public function generateText(){
 
-        $prompt = "hi my name is badr";
+        $today = Carbon::now();
+        $depence = Depences::where('user_id', auth()->user()->id)->where('date', '>=', $today->startOfMonth())->get();
+        $prompt = "apartir de mes depences de ce mois ci, qu ' est ce que je peux faire pour economiser de l'argent dans trois lignes au maximum et le devis c est MAD : ".$depence;
         $response = $this->geminiService->generateResponse($prompt);
         return $response['candidates'][0]['content']['parts'][0]['text'];
 

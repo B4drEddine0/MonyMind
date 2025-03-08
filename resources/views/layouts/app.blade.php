@@ -137,10 +137,13 @@
                         <div class="flex items-center space-x-4">
                             <!-- Notifications -->
                             <div class="relative">
-                                <button class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                                <a href="/alert">
+                                    <button class="text-gray-600 hover:text-gray-800 focus:outline-none">
                                     <i class="fas fa-bell text-xl"></i>
                                     <span class="absolute top-0 right-0 w-2 h-2 bg-accent rounded-full"></span>
-                                </button>
+                                    </button>
+                                </a>
+                                
                             </div>
                         </div>
                     </div>

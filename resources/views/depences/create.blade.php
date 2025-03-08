@@ -84,9 +84,9 @@
                         <div class="mt-1">
                             <select name="recurrence_schedule" id="recurrence_schedule" 
                                 class="shadow-sm focus:ring-secondary focus:border-secondary block w-full sm:text-sm border-gray-300 rounded-md">
-                                <option value="weekly" {{ old('recurrence_schedule') == 'weekly' ? 'selected' : '' }}>Hebdomadaire</option>
-                                <option value="monthly" {{ old('recurrence_schedule') == 'monthly' ? 'selected' : '' }}>Mensuelle</option>
-                                <option value="yearly" {{ old('recurrence_schedule') == 'yearly' ? 'selected' : '' }}>Annuelle</option>
+                                <option value="weekly">Hebdomadaire</option>
+                                <option value="monthly">Mensuelle</option>
+                                <option value="yearly">Annuelle</option>
                             </select>
                         </div>
                     </div>

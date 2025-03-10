@@ -27,22 +27,24 @@
     </script>
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- Animated Background -->
     <div class="fixed inset-0 -z-10 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5"></div>
         <div id="particles" class="absolute inset-0"></div>
     </div>
 
-    <!-- Navigation -->
     <nav class="relative z-10 py-6 px-4 md:px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="/" class="flex items-center space-x-2">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                <div class="flex items-center space-x-1">
+                    <div class="h-9 w-9 rounded-lg bg-secondary flex items-center justify-center shadow-sm">
+                        <span class="text-white font-extrabold text-lg">M</span>
+                    </div>
+                    <span class="text-xl font-bold text-primary ml-1">oney</span>
+                    <div class="h-9 w-9 rounded-lg bg-accent flex items-center justify-center -ml-2 shadow-sm">
+                        <span class="text-white font-extrabold text-lg">M</span>
+                    </div>
+                    <span class="text-xl font-bold text-primary ml-1">ind</span>
                 </div>
-                <span class="text-xl font-bold text-primary">MoneyMind</span>
             </a>
             <div class="flex items-center gap-4">
                 <a href="/login" class="hidden md:block hover:text-secondary transition-colors">Connexion</a>
@@ -51,7 +53,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+
     <section class="relative pt-10 pb-20 md:pt-20 md:pb-32">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
             <div class="flex flex-col md:flex-row items-center">
@@ -94,11 +96,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Decorative elements -->
+            
                         <div class="absolute top-4 right-4 w-16 h-16 bg-accent/30 rounded-full blur-xl"></div>
                         <div class="absolute bottom-10 left-4 w-12 h-12 bg-secondary/40 rounded-full blur-lg"></div>
                     </div>
-                    <!-- Floating cards -->
+        
                     <div class="absolute -top-6 -right-4 bg-white rounded-lg shadow-lg p-4 w-32 rotate-6 hidden md:block">
                         <div class="h-2 w-16 bg-secondary/30 rounded-full mb-2"></div>
                         <div class="h-2 w-12 bg-gray-200 rounded-full"></div>
@@ -118,7 +120,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+
     <section id="features" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
             <div class="text-center mb-16">
@@ -127,7 +129,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
+        
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
                     <div class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -137,8 +139,7 @@
                     <h3 class="font-semibold text-xl mb-3 text-primary">Suivi Intelligent</h3>
                     <p class="text-gray-600">Suivez automatiquement vos revenus et dépenses avec des catégories personnalisables selon votre style de vie.</p>
                 </div>
-                
-                <!-- Feature 2 -->
+           
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
                     <div class="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,7 +150,7 @@
                     <p class="text-gray-600">Définissez et atteignez vos objectifs financiers grâce à des suggestions personnalisées basées sur l'IA.</p>
                 </div>
                 
-                <!-- Feature 3 -->
+            
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
                     <div class="w-14 h-14 bg-danger/10 rounded-lg flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-danger" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -159,8 +160,7 @@
                     <h3 class="font-semibold text-xl mb-3 text-primary">Alertes Personnalisées</h3>
                     <p class="text-gray-600">Recevez des notifications intelligentes pour rester dans votre budget et éviter les dépenses imprévues.</p>
                 </div>
-                
-                <!-- Feature 4 -->
+        
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
                     <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -170,8 +170,7 @@
                     <h3 class="font-semibold text-xl mb-3 text-primary">Dépenses Récurrentes</h3>
                     <p class="text-gray-600">Automatisez la gestion de vos dépenses mensuelles et récurrentes pour ne plus jamais manquer un paiement.</p>
                 </div>
-                
-                <!-- Feature 5 -->
+           
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
                     <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -182,7 +181,7 @@
                     <p class="text-gray-600">Bénéficiez de conseils personnalisés et d'analyses détaillées pour optimiser votre gestion financière.</p>
                 </div>
                 
-                <!-- Feature 6 -->
+    
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
                     <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -196,7 +195,7 @@
         </div>
     </section>
 
-    <!-- How it Works -->
+
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
             <div class="text-center mb-16">
@@ -240,7 +239,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -257,7 +255,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-10 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -280,28 +277,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Particle Animation Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const particles = document.getElementById('particles');
-            const symbols = ['$', '€', '%', '💰', '💸', '📊'];
-            const particleCount = 20;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-                
-                particle.className = 'absolute text-gray-200 opacity-20';
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animation = `float ${5 + Math.random() * 10}s linear ${Math.random() * 5}s infinite`;
-                particle.style.fontSize = `${Math.random() * 20 + 10}px`;
-                particle.textContent = symbol;
-                
-                particles.appendChild(particle);
-            }
-        });
-    </script>
 </body>
 </html>

@@ -70,4 +70,9 @@ class User extends Authenticatable
         }
         return 'dashboard';
     }
+
+    public function getLastLogin(){
+        $this->last_login_at = now();
+        $this->save();
+    }
 }

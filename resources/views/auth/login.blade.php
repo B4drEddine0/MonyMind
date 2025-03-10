@@ -26,22 +26,19 @@
     </script>
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- Animated Background -->
-    <div class="fixed inset-0 -z-10 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5"></div>
-        <div id="particles" class="absolute inset-0"></div>
-    </div>
-
-    <!-- Navigation -->
     <nav class="relative z-10 py-6 px-4 md:px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="/" class="flex items-center space-x-2">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                <div class="flex items-center space-x-1">
+                    <div class="h-9 w-9 rounded-lg bg-secondary flex items-center justify-center shadow-sm">
+                        <span class="text-white font-extrabold text-lg">M</span>
+                    </div>
+                    <span class="text-xl font-bold text-primary ml-1">oney</span>
+                    <div class="h-9 w-9 rounded-lg bg-accent flex items-center justify-center -ml-2 shadow-sm">
+                        <span class="text-white font-extrabold text-lg">M</span>
+                    </div>
+                    <span class="text-xl font-bold text-primary ml-1">ind</span>
                 </div>
-                <span class="text-xl font-bold text-primary">MoneyMind</span>
             </a>
             <div class="flex items-center gap-4">
                 <a href="/register" class="text-gray-600 hover:text-secondary transition-colors">S'inscrire</a>
@@ -49,7 +46,6 @@
         </div>
     </nav>
 
-    <!-- Login Form -->
     <div class="max-w-md mx-auto mt-8 mb-16 px-4">
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div class="bg-gradient-to-r from-secondary to-accent p-6">
@@ -57,7 +53,6 @@
                 <p class="text-white/80">Connectez-vous à votre compte MoneyMind</p>
             </div>
             <div class="p-8">
-                <!-- Session Status -->
                 @if (session('status'))
                     <div class="bg-blue-50 text-blue-600 p-4 rounded-lg mb-6">
                         {{ session('status') }}
@@ -66,8 +61,6 @@
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-
-                    <!-- Email Address -->
                     <div class="mb-6">
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Adresse email</label>
                         <div class="relative">
@@ -83,7 +76,6 @@
                         @enderror
                     </div>
 
-                    <!-- Password -->
                     <div class="mb-6">
                         <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
                         <div class="relative">
@@ -99,7 +91,6 @@
                         @enderror
                     </div>
 
-                    <!-- Remember Me -->
                     <div class="flex items-center justify-between mb-6">
                         <label for="remember_me" class="inline-flex items-center">
                             <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-secondary focus:ring-secondary/30" name="remember">

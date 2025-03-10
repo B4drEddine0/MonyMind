@@ -24,7 +24,7 @@ class DashboardController extends Controller
     public function index()
     {
         $reccurents = Depences::where('user_id', auth()->user()->id)->where('is_recurring', true)->limit(3)->get();
-        $souhaits = Souhait::where('user_id', auth()->user()->id)->orderBy('updated_at', 'desc')->limit(3)->get();
+        $souhaits = Souhait::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->limit(3)->get();
         $depences = Depences::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
         $depence = Depences::where('user_id', auth()->user()->id)->whereMonth('date', Carbon::now()->month)->whereYear('date', Carbon::now()->year)->get();
         $totalDepences = $depence->sum('amount'); 
@@ -101,7 +101,8 @@ class DashboardController extends Controller
 
         $today = Carbon::now();
         $depence = Depences::where('user_id', auth()->user()->id)->where('date', '>=', $today->startOfMonth())->get();
-        $prompt = "apartir de mes depences de ce mois ci, qu ' est ce que je peux faire pour economiser de l'argent dans trois lignes au maximum et le devis c est MAD : ".$depence;
+        $user = User::where('id', auth()->user()->id)->get('salaire');
+        $prompt = "apartir de mes depences de ce mois ci, qu ' est ce que je peux faire pour economiser de l'argent dans trois lignes au maximum et le devis c est MAD : ".$depence. " btw mon salaire mensuel est : ".$user. "MAD";
         $response = $this->geminiService->generateResponse($prompt);
         return $response['candidates'][0]['content']['parts'][0]['text'];
 

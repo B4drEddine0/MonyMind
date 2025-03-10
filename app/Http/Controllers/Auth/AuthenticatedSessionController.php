@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        Auth::user()->getLastLogin();
         return redirect()->intended(Auth::user()->getRedirectRoute());
     }
 

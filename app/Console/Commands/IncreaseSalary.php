@@ -2,10 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\autoSalaire;
 use Illuminate\Console\Command;
 use App\Models\User;
 use App\Models\Epargne;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+
 
 class IncreaseSalary extends Command
 {
@@ -54,6 +57,11 @@ class IncreaseSalary extends Command
         foreach($users as $user){
             $user->budget += $user->salaire;
             $user->save();
+            $Data = [
+                'username' => $user->name,
+                'salaire' => $user->salaire
+            ];
+            Mail::to($user->email)->send(new autoSalaire($Data));
             $this->info("Updated budget for {$user->name}");
         }
         $this->info('User budgets have been updated successfully for todays matching users.');

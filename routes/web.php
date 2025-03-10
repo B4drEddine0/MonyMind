@@ -9,13 +9,14 @@ use App\Http\Controllers\AdminDashController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AlertController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Mail\GlobalAlert;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,16 +24,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::resource('depences', DepencesController::class);
     Route::resource('epargner', EpargneController::class);
     Route::resource('souhait', SouhaitController::class);
-    Route::resource('admin', AdminDashController::class);
+    Route::resource('admin', AdminDashController::class)->middleware(AdminMiddleware::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('alert', AlertController::class);
 });
-
-Route::delete('/admin/users/remove-inactive', [AdminDashController::class, 'removeInactiveUsers'])
-    ->name('admin.users.remove-inactive')
-    ->middleware(AdminMiddleware::class);
 
 require __DIR__.'/auth.php';

@@ -1,66 +1,158 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Here’s the regenerated **README.md** including all features, icons, and the deployment information:
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+# MoneyMind - Personal Budget Management Application
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**MoneyMind** is a platform designed to simplify personal budget management by helping users track their income, expenses, savings goals, and wishlist items, while receiving intelligent suggestions through AI. The platform automates salary entries, manages recurring expenses, sends alerts when users exceed budget thresholds, and allows administrators to add custom expense categories. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The application is hosted on a Linux server and is accessible via [this link](http://161.35.205.124/).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+### 💻 **Front Office**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### 🧑‍💻 **Visitor Features:**
+- **Public Homepage:** View a general introduction to the application.
+- **Sign Up:** Users can register by providing their salary input and the credit date.
+- **Password Recovery:** Users can recover their password.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### 👤 **Authenticated User Features:**
+- **Salary Management:** Input and modify monthly salary with an automatic credit date (e.g., 5000 DH every 10th of the month).
+- **Expense Management:** Add expenses with name, price, and category (selected from admin-created categories).
+- **Recurring Expenses:** Users can add, modify, or delete recurring expenses (e.g., "Rent - 1000 DH, due every 1st of the month").
+- **Budget Alerts:** Set budget thresholds (e.g., "Alert if I exceed 50% of my budget"). Category-specific thresholds can also be set.
+- **Personal Dashboard:** View remaining income, total expenses, distribution by category, savings progress (e.g., "Save 200 DH"), and wishlist status (e.g., "Phone - 1500 DH, 10% achieved").
+- **Notifications:** Receive alerts on exceeding thresholds, salary credits, and other important updates.
+- **Savings Goals & Wishlist:** Track savings progress and wishlist items with percentage completion.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛠️ **Back Office (Admin Features)**
 
-## Laravel Sponsors
+- **Admin Dashboard:** View statistics like the total number of users, average monthly income, and manage inactive accounts.
+- **Account Management:** Delete inactive accounts (no activity in the last 2 months).
+- **Category Management:** Add, modify, or delete expense categories (e.g., "Entertainment," "Food," "Bills").
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🔄 **Transversal Features**
+- **Role-based Authentication:** Implement a secure login system for users and admins.
+- **Email Notifications:** Send notifications about alerts, salary updates, and other essential updates.
+- **Automatic Salary & Recurring Expense Management:** Salaries and recurring expenses are managed automatically through the platform.
+- **AI Suggestions:** Integrate AI suggestions via Gemini based on users’ spending patterns.
+- **Statistics:** Simple statistics for both users (e.g., spending trends) and administrators (e.g., average income).
+- **Expense Filtering:** Filter expenses by category or period.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## ⚙️ **Technical Requirements**
 
-## Contributing
+- **Framework:** Laravel (latest stable version)
+- **Database:** MySQL / PostgreSQL
+- **Frontend:** Blade + Tailwind CSS
+- **Authentication:** Laravel Breeze / Jetstream / UI
+- **Tools:** 
+  - `php artisan make:model -mcr`
+  - `php artisan make:seeder & make:factory`
+  - `php artisan tinker`
+  - Eloquent ORM
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+### 🧑‍💻 **Application Architecture**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### **User Management (users)**
+- **Authentication:** Secure user login and sign-up with roles (user/admin).
+- **Profile Management:** Users can view and edit their profile information.
 
-## Security Vulnerabilities
+#### **Event Management (events)**
+- **CRUD Operations:** Create, read, update, delete events with pagination.
+- **Geolocation:** Users can filter events based on proximity.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### **RSVP Management (rsvps)**
+- **Participant Management:** Users can register and unregister for events.
+- **Notification System:** Alerts for changes in event status.
 
-## License
+#### **Comment Management (comments)**
+- **Comment System:** Add, edit, or delete comments on events.
+- **Moderation:** Users can delete their own comments.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 🚀 **Deployment**
+
+The **MoneyMind** application is hosted on a **Linux server** and can be accessed through the following link:  
+**[http://161.35.205.124/](http://161.35.205.124/)**
+
+### Hosting Details
+- **Platform:** Hosted on a Linux server via **DigitalOcean** (or AWS/ Azure, depending on the configuration).
+- **Web Server:** Configured with **Nginx/Apache**.
+- **Database:** **MySQL/PostgreSQL**.
+- **Deployment Environment:** Hosted on a **Linux server** for live access.
+
+---
+
+## 🔧 **Bonus Features**
+
+- **Expense History:** View past expenses, compare trends (e.g., "February: More spending in Entertainment").
+- **Contextual Suggestions:** AI provides suggestions based on specific periods (e.g., "February: Watch out for Ramadan-related expenses!").
+- **Export Data:** Users can download monthly expense reports in **PDF** or **CSV** format.
+
+---
+
+## 🎯 **Example Workflow**
+
+1. **Sign-Up:** User enters a salary of 5000 DH, credited on the 15th of each month.
+2. **Admin:** Adds categories like "Entertainment," "Food," and "Bills."
+3. **Recurring Expenses:** User adds "Internet subscription - 200 DH, Bills, due on the 10th." Budget updates to 4800 DH on February 10.
+4. **Manual Expenses:** User adds "Game - 600 DH, Entertainment" (remaining 4200 DH).
+5. **Alerts:** User sets a budget threshold at 50% (2500 DH) and adds "TV - 2000 DH, Miscellaneous." Total spent = 2800 DH. Alert: "You’ve exceeded 50% of your budget!"
+6. **AI Suggestions:** Gemini suggests: "Wow, 600 DH in Entertainment? Try free alternatives to save."
+7. **Goals:** "Save 300 DH" (not achieved). Wishlist: "Headphones - 1000 DH" (10% progress with 100 DH saved).
+8. **Admin:** Sees 20 users, with an average income of 4500 DH. Deletes an inactive account and adds "Transport" as a new category.
+9. **Deployment:** The app is accessible via **[http://161.35.205.124/](http://161.35.205.124/)**.
+
+---
+
+## 🗓️ **Development and Deployment Phases**
+
+### 📅 **Week 1: Basic Setup & Core Features**
+- **Initialize GitHub repository** for project management.
+- **Set up Laravel environment** and configure database (MySQL/PostgreSQL).
+- **User Authentication:** Implement login, registration, password recovery with roles (user/admin).
+- **Form Development:** Create CRUD forms for salary, expenses, recurring expenses, savings goals, and wishlist.
+- **User Dashboard:** Design dashboard to show remaining income, total expenses, and budget progress.
+- **Recurring Expenses Management:** Implement automated salary and recurring expense management.
+- **Admin Dashboard:** Add functionality to manage user accounts and expense categories.
+
+### 📅 **Week 2: Advanced Features, Testing & Deployment**
+- **Integrate Gemini API** for personalized AI suggestions based on expenses.
+- **Set up Budget Alerts** with global and category-specific thresholds.
+- **Visualizations:** Implement simple graphs to visualize spending distribution.
+- **UI/UX Improvements:** Enhance the design to make it responsive and user-friendly.
+- **Test Features:** Conduct functional tests and fix any bugs.
+- **Documentation:** Create diagrams for class structure and use cases.
+- **Deploy Application:** Transfer code to a Linux server (DigitalOcean, AWS, or Azure) and perform live tests.
+- **Final Delivery:** Upload the code to GitHub and deploy the live version of the app.
+
+---
+
+## ✅ **Performance Criteria**
+
+### **Functional:**
+- Secure authentication and proper management of financial data (create, modify, delete expenses).
+- Automatic budget distribution adhering to predefined rules.
+
+### **Technical:**
+- Well-structured **Laravel MVC** architecture with modular code.
+- **Eloquent ORM** and **middleware** for efficient data handling.
+- **API Integration:** Implement AI-driven suggestions via **Gemini**.
+
+### **Organizational:**
+- Regular updates and tracking through **GitHub**.
+- Timely delivery and quality documentation.
+
+### **Pedagogical:**
+- Clear and comprehensive diagrams (UML class diagrams, use cases).
+- Professional presentation and demonstrations.
+
+---
+
+Feel free to modify any additional content, customize the hosting links, or further adjust specific details as needed for your project!
